@@ -37,6 +37,30 @@ Thumbs.db
 # Python compiled files
 *.pyc
 
-# Migrations (опционально - можно удалить, если хотите хранить миграции в репозитории)
+# Migrations - храним в Git (рекомендуется)
+# Удалите или закомментируйте строки ниже:
 # */migrations/*.py
 # !*/migrations/__init__.py
+
+# Если ТОЧНО не хотите хранить миграции - раскомментируйте:
+# */migrations/[0-9][0-9][0-9][0-9]_*.py
+# !*/migrations/__init__.py
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Secrets
+secrets.json
+config/secrets.json
+
+# Media files (СРОЧНО ДОБАВИТЬ!)
+/media/
+media/
+!media/.gitkeep  # Опционально: сохранить пустую папку
+
+# Static files collected
+/staticfiles/
+/static_root/
+/collected_static/
