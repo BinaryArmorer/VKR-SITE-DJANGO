@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}О компании | Радиозавод «Кристалл»{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-header__title">О радиозаводе «Кристалл»</h1>
+        <p class="page-header__subtitle">Надежность, проверенная временем</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2>История завода</h2>
+                <p>Радиозавод «Кристалл» основан в 1988 году. Более 35 лет мы производим электронные компоненты для различных отраслей промышленности.</p>
+                
+                <h2>Миссия</h2>
+                <p>Обеспечение российской промышленности качественной элементной базой для создания конкурентоспособной радиоэлектронной аппаратуры.</p>
+                
+                <h2>Производство</h2>
+                <p>Наш завод оснащен современным оборудованием для полного цикла производства — от разработки кристаллов до финального тестирования готовых изделий.</p>
+                
+                <h2>Лицензии и сертификаты</h2>
+                <ul class="licenses-list">
+                    <li>Лицензия на разработку, производство и испытание авиационной техники</li>
+                    <li>Сертификат системы менеджмента качества ISO 9001</li>
+                    <li>Лицензия на производство военной техники</li>
+                    <li>Сертификат соответствия для космической отрасли</li>
+                </ul>
+            </div>
+            <div class="about-sidebar">
+                <div class="contact-card">
+                    <h3>Контакты</h3>
+                    <p><strong>Адрес:</strong> 123456, г. Москва, ул. Электронная, д. 15</p>
+                    <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+                    <p><strong>Email:</strong> info@kristall.ru</p>
+                    <p><strong>Факс:</strong> +7 (495) 123-45-68</p>
+                </div>
+                <div class="map-card">
+                    <h3>Схема проезда</h3>
+                    <div class="map-placeholder">
+                        <img src="{% static 'main/img/map-placeholder.png' %}" alt="Карта">
+                        <p>м. Электронная, выход к ТПУ "Электронная"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section--dark">
+    <div class="container">
+        <h2 class="section__title">Реквизиты</h2>
+        <div class="requisites">
+            <p><strong>Полное наименование:</strong> Акционерное общество «Радиозавод «Кристалл»</p>
+            <p><strong>ИНН:</strong> 1234567890</p>
+            <p><strong>КПП:</strong> 123456001</p>
+            <p><strong>ОГРН:</strong> 1234500012345</p>
+            <p><strong>Юридический адрес:</strong> 123456, г. Москва, ул. Электронная, д. 15</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

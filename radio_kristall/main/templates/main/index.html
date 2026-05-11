@@ -1,116 +1,139 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../static/main/css/style.css">
-    <title></title>
-</head>
-<body>
-    <header>
-        <nav>
-            <div>
-                <img src="" alt="Клисталл">
-                <p>Кристалл</p>
-            </div>
-            <ul>
-                <li><a href="">Главная</a></li>
-                <li><a href="">Каталог</a></li>
-                <li><a href="">Новости</a></li>
-                <li><a href="">Вакансии</a></li>
-                <li><a href="">О компании</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'main/base.html' %}
+{% load static %}
 
-    <main class="hero">
-        <div class="container hero__grid">
-            <!-- Левая колонка: текст -->
-            <div class="hero__content">
-                <span class="hero__badge">Производство электронной компонентной базы (ЭКБ)</span>
-                <h1 class="hero__title">
-                    Радиозавод <span class="hero__accent">«Кристалл»</span>
-                </h1>
-                <p class="hero__description">
-                    <strong>«Кристалл»</strong> — российский производитель пассивных и активных
-                    компонентов для радиоэлектронной аппаратуры. Мы обеспечиваем элементной базой
-                    предприятия оборонно-промышленного комплекса, космической отрасли и гражданской
-                    электроники.
-                </p>
+{% block title %}Главная | Радиозавод «Кристалл»{% endblock %}
 
-                <div class="hero__stats">
-                    <div class="stat">
-                        <span class="stat__number">35+</span>
-                        <span class="stat__label">лет на рынке</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat__number">500+</span>
-                        <span class="stat__label">типономиналов</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat__number">100%</span>
-                        <span class="stat__label">входной контроль</span>
-                    </div>
+{% block content %}
+<section class="hero">
+    <div class="container hero__grid">
+        <div class="hero__content">
+            <span class="hero__badge">Производство электронной компонентной базы (ЭКБ)</span>
+            <h1 class="hero__title">
+                Радиозавод <span class="hero__accent">«Кристалл»</span>
+            </h1>
+            <p class="hero__description">
+                <strong>«Кристалл»</strong> — российский производитель пассивных и активных
+                компонентов для радиоэлектронной аппаратуры. Мы обеспечиваем элементной базой
+                предприятия оборонно-промышленного комплекса, космической отрасли и гражданской
+                электроники.
+            </p>
+            <div class="hero__stats">
+                <div class="stat">
+                    <span class="stat__number">35+</span>
+                    <span class="stat__label">лет на рынке</span>
                 </div>
-
-                <div class="hero__buttons">
-                    <a href="/catalog" class="btn btn--primary">Перейти в каталог</a>
-                    <a href="#about" class="btn btn--secondary">Подробнее о заводе</a>
+                <div class="stat">
+                    <span class="stat__number">500+</span>
+                    <span class="stat__label">типономиналов</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__number">100%</span>
+                    <span class="stat__label">входной контроль</span>
                 </div>
             </div>
-
-            <!-- Правая колонка: иконки / визуализация продукции -->
-            <div class="hero__products">
-                <h3 class="products__title">Мы производим:</h3>
-                <div class="products__grid">
-                    <div class="product-card">
-                        <div class="product-card__icon">⚡</div>
-                        <div class="product-card__name">Полупроводники</div>
-                        <div class="product-card__types">Диоды, стабилитроны, тиристоры</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__icon">🌀</div>
-                        <div class="product-card__name">Транзисторы</div>
-                        <div class="product-card__types">NPN, PNP, MOSFET, IGBT</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__icon">📦</div>
-                        <div class="product-card__name">Микросхемы</div>
-                        <div class="product-card__types">Логика, ОУ, таймеры, драйверы</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__icon">🔷</div>
-                        <div class="product-card__name">Конденсаторы</div>
-                        <div class="product-card__types">Керамические, электролитические, SMD</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__icon">🔧</div>
-                        <div class="product-card__name">Резисторы</div>
-                        <div class="product-card__types">Постоянные, переменные, подстроечные</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__icon">⬤</div>
-                        <div class="product-card__name">Аксессуары</div>
-                        <div class="product-card__types">Панельки для микросхем, радиаторы</div>
-                    </div>
+            <div class="hero__buttons">
+                <a href="#" class="btn btn--primary">Перейти в каталог</a>
+                <a href="{% url 'about' %}" class="btn btn--secondary">Подробнее о заводе</a>
+            </div>
+        </div>
+        <div class="hero__products">
+            <h3 class="products__title">Мы производим:</h3>
+            <div class="products__grid">
+                <div class="product-card">
+                    <div class="product-card__icon">⚡</div>
+                    <div class="product-card__name">Полупроводники</div>
+                    <div class="product-card__types">Диоды, стабилитроны, тиристоры</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card__icon">🌀</div>
+                    <div class="product-card__name">Транзисторы</div>
+                    <div class="product-card__types">NPN, PNP, MOSFET, IGBT</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card__icon">📦</div>
+                    <div class="product-card__name">Микросхемы</div>
+                    <div class="product-card__types">Логика, ОУ, таймеры, драйверы</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card__icon">🔷</div>
+                    <div class="product-card__name">Конденсаторы</div>
+                    <div class="product-card__types">Керамические, электролитические, SMD</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card__icon">🔧</div>
+                    <div class="product-card__name">Резисторы</div>
+                    <div class="product-card__types">Постоянные, переменные, подстроечные</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card__icon">⬤</div>
+                    <div class="product-card__name">Аксессуары</div>
+                    <div class="product-card__types">Панельки для микросхем, радиаторы</div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</section>
 
-    <footer>
-        <ul>
-            <li><p>Горячая линия: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p></li>
-            <li><p>Электронная почта: <a href="mailto:info@site.ru">info@site.ru</a></p></li>
-            <li><p>Расписание работы: Пн-Пт, 10:00 до 18:00</p></li>
-        </ul>
-        <ul>
-            <li><a href=""><img style="width: 25px; height: auto;" src="../../static/main/img/logo/max.svg" alt="Макс"></a></li>
-            <li><a href=""><img style="width: 25px; height: auto;" src="../../static/main/img/logo/vk.svg" alt="Вк"></a></li>
-            <li><a href=""><img style="width: 25px; height: auto;" src="../../static/main/img/logo/telegram.webp" alt="Телеграмм"></a></li>
-            <li><a href=""><img style="width: 25px; height: auto;" src="../../static/main/img/logo/whatsapp.svg" alt="Вацап"></a></li>
-        </ul>
-        <p>© 2025 Радиозавод "Кристалл"</p>
-    </footer>
-</body>
-</html>
+<!-- Последние новости -->
+<section class="section">
+    <div class="container">
+        <h2 class="section__title">Последние новости</h2>
+        <div class="cards-grid">
+            {% for item in latest_news %}
+            <div class="card">
+                {% if item.image %}
+                <img src="{{ item.image.url }}" alt="{{ item.title }}" class="card__image">
+                {% endif %}
+                <div class="card__content">
+                    <h3 class="card__title">{{ item.title }}</h3>
+                    <p class="card__date">{{ item.publish_date|date:"d.m.Y" }}</p>
+                    <p class="card__text">{{ item.content|truncatewords:20 }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>Новостей пока нет.</p>
+            {% endfor %}
+        </div>
+        <div class="section__footer">
+            <a href="{% url 'news' %}" class="btn btn--secondary">Все новости →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Последние вакансии -->
+<section class="section section--dark">
+    <div class="container">
+        <h2 class="section__title">Актуальные вакансии</h2>
+        <div class="vacancies-list">
+            {% for vacancy in latest_vacancies %}
+            <div class="vacancy-card">
+                <div class="vacancy-card__header">
+                    <h3 class="vacancy-card__title">{{ vacancy.title }}</h3>
+                    <span class="vacancy-card__salary">{{ vacancy.salary }}</span>
+                </div>
+                <p class="vacancy-card__description">{{ vacancy.description|truncatewords:30 }}</p>
+                <p class="vacancy-card__date">Опубликовано: {{ vacancy.publish_date|date:"d.m.Y" }}</p>
+            </div>
+            {% empty %}
+            <p>Актуальных вакансий нет.</p>
+            {% endfor %}
+        </div>
+        <div class="section__footer">
+            <a href="{% url 'vacancies' %}" class="btn btn--primary">Все вакансии →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Клиенты -->
+<section class="section">
+    <div class="container">
+        <h2 class="section__title">Наши клиенты</h2>
+        <div class="clients-grid">
+            <div class="client-card">Оборонно-промышленный комплекс</div>
+            <div class="client-card">Космическая отрасль</div>
+            <div class="client-card">Гражданская электроника</div>
+            <div class="client-card">Частные компании</div>
+        </div>
+    </div>
+</section>
+{% endblock %}

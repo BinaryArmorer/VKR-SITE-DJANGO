@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Вакансии | Радиозавод «Кристалл»{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-header__title">Карьера на «Кристалле»</h1>
+        <p class="page-header__subtitle">Станьте частью команды российского производителя электроники</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="vacancies-grid">
+            {% for vacancy in vacancies %}
+            <div class="vacancy-full-card">
+                <div class="vacancy-full-card__header">
+                    <h2 class="vacancy-full-card__title">{{ vacancy.title }}</h2>
+                    <span class="vacancy-full-card__salary">{{ vacancy.salary }}</span>
+                </div>
+                <div class="vacancy-full-card__description">
+                    {{ vacancy.description|linebreaksbr }}
+                </div>
+                <div class="vacancy-full-card__footer">
+                    <p class="vacancy-full-card__date">Опубликовано: {{ vacancy.publish_date|date:"d.m.Y" }}</p>
+                    <button class="btn btn--primary vacancy-full-card__btn">Откликнуться</button>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">Актуальных вакансий нет. Загляните позже!</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

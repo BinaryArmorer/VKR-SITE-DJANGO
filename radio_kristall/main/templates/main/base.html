@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <title>{% block title %}Радиозавод «Кристалл»{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <img src="{% static 'main/img/logo-placeholder.png' %}" alt="Кристалл">
+                <p>Кристалл</p>
+            </div>
+            <ul>
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url 'news' %}">Новости</a></li>
+                <li><a href="{% url 'vacancies' %}">Вакансии</a></li>
+                <li><a href="{% url 'about' %}">О компании</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <ul>
+            <li><p>Горячая линия: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p></li>
+            <li><p>Электронная почта: <a href="mailto:info@kristall.ru">info@kristall.ru</a></p></li>
+            <li><p>Расписание работы: Пн-Пт, 9:00 до 18:00</p></li>
+        </ul>
+        <ul>
+            <li><a href="#"><img style="width: 25px; height: auto;" src="{% static 'main/img/logo/max.svg' %}" alt="Max"></a></li>
+            <li><a href="#"><img style="width: 25px; height: auto;" src="{% static 'main/img/logo/vk.svg' %}" alt="VK"></a></li>
+            <li><a href="#"><img style="width: 25px; height: auto;" src="{% static 'main/img/logo/telegram.webp' %}" alt="Telegram"></a></li>
+            <li><a href="#"><img style="width: 25px; height: auto;" src="{% static 'main/img/logo/whatsapp.svg' %}" alt="WhatsApp"></a></li>
+        </ul>
+        <p>© 2025 Радиозавод "Кристалл"</p>
+    </footer>
+</body>
+</html>
