@@ -11,7 +11,7 @@
     <header>
         <nav>
             <div>
-                <img src="{% static 'main/img/logo-placeholder.png' %}" alt="Кристалл">
+                <div class="logo-placeholder">К</div>
                 <p>Кристалл</p>
             </div>
             <ul>
@@ -33,11 +33,11 @@
             <li><p>Электронная почта: <a href="mailto:info@kristall.ru">info@kristall.ru</a></p></li>
             <li><p>Расписание работы: Пн-Пт, 9:00 до 18:00</p></li>
         </ul>
-        <ul>
-            <li><a href="#"><img style="width: 25px; height: auto;" src="{% static 'main/img/logo/max.svg' %}" alt="Max"></a></li>
-            <li><a href="#"><img style="width: 25px; height: auto;" src="{% static 'main/img/logo/vk.svg' %}" alt="VK"></a></li>
-            <li><a href="#"><img style="width: 25px; height: auto;" src="{% static 'main/img/logo/telegram.webp' %}" alt="Telegram"></a></li>
-            <li><a href="#"><img style="width: 25px; height: auto;" src="{% static 'main/img/logo/whatsapp.svg' %}" alt="WhatsApp"></a></li>
+        <ul class="social-links">
+            <li><a href="#"><img src="{% static 'main/img/logo/max.svg' %}" alt="Max" onerror="this.style.display='none'; this.outerHTML='📱'"></a></li>
+            <li><a href="#"><img src="{% static 'main/img/logo/vk.svg' %}" alt="VK" onerror="this.style.display='none'; this.outerHTML='📘'"></a></li>
+            <li><a href="#"><img src="{% static 'main/img/logo/telegram.webp' %}" alt="Telegram" onerror="this.style.display='none'; this.outerHTML='💬'"></a></li>
+            <li><a href="#"><img src="{% static 'main/img/logo/whatsapp.svg' %}" alt="WhatsApp" onerror="this.style.display='none'; this.outerHTML='📞'"></a></li>
         </ul>
         <p>© 2025 Радиозавод "Кристалл"</p>
     </footer>

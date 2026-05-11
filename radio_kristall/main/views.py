@@ -2,13 +2,8 @@ from django.shortcuts import render
 from .models import News, Vacancies
 
 def index(request):
-    # Главная страница - показываем последние 3 новости и вакансии
-    latest_news = News.objects.filter(is_published=True)[:3]
-    latest_vacancies = Vacancies.objects.filter(is_published=True)[:3]
-    return render(request, 'main/index.html', {
-        'latest_news': latest_news,
-        'latest_vacancies': latest_vacancies,
-    })
+    # Главная страница - без новостей и вакансий
+    return render(request, 'main/index.html')
 
 def news_list(request):
     # Страница всех новостей

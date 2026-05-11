@@ -74,65 +74,31 @@
     </div>
 </section>
 
-<!-- Последние новости -->
-<section class="section">
-    <div class="container">
-        <h2 class="section__title">Последние новости</h2>
-        <div class="cards-grid">
-            {% for item in latest_news %}
-            <div class="card">
-                {% if item.image %}
-                <img src="{{ item.image.url }}" alt="{{ item.title }}" class="card__image">
-                {% endif %}
-                <div class="card__content">
-                    <h3 class="card__title">{{ item.title }}</h3>
-                    <p class="card__date">{{ item.publish_date|date:"d.m.Y" }}</p>
-                    <p class="card__text">{{ item.content|truncatewords:20 }}</p>
-                </div>
-            </div>
-            {% empty %}
-            <p>Новостей пока нет.</p>
-            {% endfor %}
-        </div>
-        <div class="section__footer">
-            <a href="{% url 'news' %}" class="btn btn--secondary">Все новости →</a>
-        </div>
-    </div>
-</section>
-
-<!-- Последние вакансии -->
-<section class="section section--dark">
-    <div class="container">
-        <h2 class="section__title">Актуальные вакансии</h2>
-        <div class="vacancies-list">
-            {% for vacancy in latest_vacancies %}
-            <div class="vacancy-card">
-                <div class="vacancy-card__header">
-                    <h3 class="vacancy-card__title">{{ vacancy.title }}</h3>
-                    <span class="vacancy-card__salary">{{ vacancy.salary }}</span>
-                </div>
-                <p class="vacancy-card__description">{{ vacancy.description|truncatewords:30 }}</p>
-                <p class="vacancy-card__date">Опубликовано: {{ vacancy.publish_date|date:"d.m.Y" }}</p>
-            </div>
-            {% empty %}
-            <p>Актуальных вакансий нет.</p>
-            {% endfor %}
-        </div>
-        <div class="section__footer">
-            <a href="{% url 'vacancies' %}" class="btn btn--primary">Все вакансии →</a>
-        </div>
-    </div>
-</section>
-
 <!-- Клиенты -->
 <section class="section">
     <div class="container">
         <h2 class="section__title">Наши клиенты</h2>
         <div class="clients-grid">
-            <div class="client-card">Оборонно-промышленный комплекс</div>
-            <div class="client-card">Космическая отрасль</div>
-            <div class="client-card">Гражданская электроника</div>
-            <div class="client-card">Частные компании</div>
+            <div class="client-card">
+                <div class="client-card__icon">🏭</div>
+                <h3>ОПК</h3>
+                <p>Оборонно-промышленный комплекс</p>
+            </div>
+            <div class="client-card">
+                <div class="client-card__icon">🚀</div>
+                <h3>Космос</h3>
+                <p>Космическая отрасль</p>
+            </div>
+            <div class="client-card">
+                <div class="client-card__icon">📱</div>
+                <h3>Гражданская</h3>
+                <p>Гражданская электроника</p>
+            </div>
+            <div class="client-card">
+                <div class="client-card__icon">💼</div>
+                <h3>B2B</h3>
+                <p>Частные компании</p>
+            </div>
         </div>
     </div>
 </section>

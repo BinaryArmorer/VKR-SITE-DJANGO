@@ -4,31 +4,62 @@
 {% block title %}Новости | Радиозавод «Кристалл»{% endblock %}
 
 {% block content %}
-<section class="page-header">
+<!-- Hero секция для новостей -->
+<section class="page-hero page-hero--news">
     <div class="container">
-        <h1 class="page-header__title">Новости предприятия</h1>
-        <p class="page-header__subtitle">Актуальная информация о жизни завода «Кристалл»</p>
+        <div class="page-hero__content">
+            <h1 class="page-hero__title">Новости предприятия</h1>
+            <p class="page-hero__subtitle">Актуальная информация о жизни радиозавода «Кристалл»</p>
+        </div>
     </div>
 </section>
 
-<section class="section">
+<!-- Сетка новостей -->
+<section class="news-section">
     <div class="container">
-        <div class="news-grid">
+        {% if news %}
+        <div class="news-masonry">
             {% for item in news %}
-            <div class="news-card">
+            <article class="news-article">
                 {% if item.image %}
-                <img src="{{ item.image.url }}" alt="{{ item.title }}" class="news-card__image">
-                {% endif %}
-                <div class="news-card__content">
-                    <h2 class="news-card__title">{{ item.title }}</h2>
-                    <p class="news-card__date">{{ item.publish_date|date:"d.m.Y" }}</p>
-                    <p class="news-card__text">{{ item.content|linebreaksbr }}</p>
+                <div class="news-article__image-wrapper">
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="news-article__image">
+                    <div class="news-article__date-badge">
+                        <span class="news-article__day">{{ item.publish_date|date:"d" }}</span>
+                        <span class="news-article__month">{{ item.publish_date|date:"M"|upper }}</span>
+                    </div>
                 </div>
-            </div>
-            {% empty %}
-            <p class="text-center">Новостей пока нет.</p>
+                {% else %}
+                <div class="news-article__image-wrapper news-article__image-wrapper--placeholder">
+                    <div class="news-article__placeholder-icon">📰</div>
+                    <div class="news-article__date-badge">
+                        <span class="news-article__day">{{ item.publish_date|date:"d" }}</span>
+                        <span class="news-article__month">{{ item.publish_date|date:"M"|upper }}</span>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="news-article__content">
+                    <h2 class="news-article__title">{{ item.title }}</h2>
+                    <div class="news-article__text">
+                        {{ item.content|linebreaksbr|truncatewords:50 }}
+                    </div>
+                    <button class="news-article__read-more" onclick="this.closest('.news-article').classList.toggle('expanded')">
+                        <span>Читать полностью</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </article>
             {% endfor %}
         </div>
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-state__icon">📭</div>
+            <h3 class="empty-state__title">Новостей пока нет</h3>
+            <p class="empty-state__text">Следите за обновлениями — новости появятся soon!</p>
+        </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
