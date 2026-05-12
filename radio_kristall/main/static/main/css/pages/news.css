@@ -20,9 +20,7 @@
 }
 
 .news-article:hover {
-    transform: translateY(-8px);
     border-color: var(--primary);
-    box-shadow: 0 12px 40px rgba(245, 158, 11, 0.15);
 }
 
 .news-article__image-wrapper {
@@ -37,10 +35,6 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
-}
-
-.news-article:hover .news-article__image {
-    transform: scale(1.05);
 }
 
 .news-article__image-wrapper--placeholder {

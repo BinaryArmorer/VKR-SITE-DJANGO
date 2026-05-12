@@ -19,8 +19,6 @@
 
 .vacancy-card:hover {
     border-color: #34d399;
-    box-shadow: 0 8px 30px rgba(52, 211, 153, 0.1);
-    transform: translateX(8px);
 }
 
 .vacancy-card__header {
@@ -154,12 +152,6 @@
     background: var(--bg-card);
     border-radius: 1rem;
     border: 1px solid var(--border-dim);
-    transition: all 0.3s ease;
-}
-
-.benefit-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary);
 }
 
 .benefit-card__icon {
