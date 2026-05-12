@@ -35,16 +35,45 @@
             <div class="about-sidebar">
                 <div class="contact-card">
                     <h3>Контакты</h3>
-                    <p><strong>Адрес:</strong> 123456, г. Москва, ул. Электронная, д. 15</p>
-                    <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
-                    <p><strong>Email:</strong> info@kristall.ru</p>
-                    <p><strong>Факс:</strong> +7 (495) 123-45-68</p>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Адрес:</strong>
+                            <p>123456, г. Москва, ул. Электронная, д. 15</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <strong>Телефон:</strong>
+                            <p><a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+                            <p><a href="tel:+74957654321">+7 (495) 765-43-21</a> (отдел кадров)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📠</span>
+                        <div>
+                            <strong>Факс:</strong>
+                            <p>+7 (495) 123-45-68</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <div>
+                            <strong>Email:</strong>
+                            <p><a href="mailto:info@kristall.ru">info@kristall.ru</a></p>
+                            <p><a href="mailto:hr@kristall.ru">hr@kristall.ru</a> (для резюме)</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="map-card">
                     <h3>Схема проезда</h3>
-                    <div class="map-placeholder">
-                        <img src="{% static 'main/img/map-placeholder.png' %}" alt="Карта">
-                        <p>м. Электронная, выход к ТПУ "Электронная"</p>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <p>🚇 м. Электронная, выход к ТПУ "Электронная"</p>
+                            <p>🚌 Общественный транспорт: автобусы № 123, 456; троллейбус № 78</p>
+                            <p>🚗 Парковка: служебная парковка на территории завода</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,11 +85,28 @@
     <div class="container">
         <h2 class="section__title">Реквизиты</h2>
         <div class="requisites">
-            <p><strong>Полное наименование:</strong> Акционерное общество «Радиозавод «Кристалл»</p>
-            <p><strong>ИНН:</strong> 1234567890</p>
-            <p><strong>КПП:</strong> 123456001</p>
-            <p><strong>ОГРН:</strong> 1234500012345</p>
-            <p><strong>Юридический адрес:</strong> 123456, г. Москва, ул. Электронная, д. 15</p>
+            <div class="requisites-grid">
+                <div class="requisite-item">
+                    <span class="requisite-label">Полное наименование:</span>
+                    <span class="requisite-value">Акционерное общество «Радиозавод «Кристалл»</span>
+                </div>
+                <div class="requisite-item">
+                    <span class="requisite-label">ИНН:</span>
+                    <span class="requisite-value">1234567890</span>
+                </div>
+                <div class="requisite-item">
+                    <span class="requisite-label">КПП:</span>
+                    <span class="requisite-value">123456001</span>
+                </div>
+                <div class="requisite-item">
+                    <span class="requisite-label">ОГРН:</span>
+                    <span class="requisite-value">1234500012345</span>
+                </div>
+                <div class="requisite-item">
+                    <span class="requisite-label">Юридический адрес:</span>
+                    <span class="requisite-value">123456, г. Москва, ул. Электронная, д. 15</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>

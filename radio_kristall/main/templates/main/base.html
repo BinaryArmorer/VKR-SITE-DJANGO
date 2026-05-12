@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     {% load static %}
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
     <title>{% block title %}Радиозавод «Кристалл»{% endblock %}</title>
@@ -10,15 +10,22 @@
 <body>
     <header>
         <nav>
-            <div>
+            <div class="nav-brand">
                 <div class="logo-placeholder">К</div>
                 <p>Кристалл</p>
             </div>
-            <ul>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'news' %}">Новости</a></li>
-                <li><a href="{% url 'vacancies' %}">Вакансии</a></li>
-                <li><a href="{% url 'about' %}">О компании</a></li>
+            
+            <button class="mobile-menu-toggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="{% url 'index' %}" class="nav-link">Главная</a></li>
+                <li><a href="{% url 'news' %}" class="nav-link">Новости</a></li>
+                <li><a href="{% url 'vacancies' %}" class="nav-link">Вакансии</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link">О компании</a></li>
             </ul>
         </nav>
     </header>
@@ -28,18 +35,60 @@
     </main>
 
     <footer>
-        <ul>
-            <li><p>Горячая линия: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p></li>
-            <li><p>Электронная почта: <a href="mailto:info@kristall.ru">info@kristall.ru</a></p></li>
-            <li><p>Расписание работы: Пн-Пт, 9:00 до 18:00</p></li>
-        </ul>
-        <ul class="social-links">
-            <li><a href="#"><img src="{% static 'main/img/logo/max.svg' %}" alt="Max" onerror="this.style.display='none'; this.outerHTML='📱'"></a></li>
-            <li><a href="#"><img src="{% static 'main/img/logo/vk.svg' %}" alt="VK" onerror="this.style.display='none'; this.outerHTML='📘'"></a></li>
-            <li><a href="#"><img src="{% static 'main/img/logo/telegram.webp' %}" alt="Telegram" onerror="this.style.display='none'; this.outerHTML='💬'"></a></li>
-            <li><a href="#"><img src="{% static 'main/img/logo/whatsapp.svg' %}" alt="WhatsApp" onerror="this.style.display='none'; this.outerHTML='📞'"></a></li>
-        </ul>
-        <p>© 2025 Радиозавод "Кристалл"</p>
+        <div class="footer-container">
+            <ul class="footer-contacts">
+                <li><p>Горячая линия: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p></li>
+                <li><p>Электронная почта: <a href="mailto:info@kristall.ru">info@kristall.ru</a></p></li>
+                <li><p>Расписание работы: Пн-Пт, 9:00 до 18:00</p></li>
+            </ul>
+            
+            <div class="footer-social">
+                <div class="footer-social-title">Мы в соцсетях</div>
+                <ul class="social-links">
+                    <li><a href="#" aria-label="WhatsApp"><img src="{% static 'main/img/logo/max.svg' %}" alt="Max" onerror="this.style.display='none'; this.outerHTML='📱'"></a></li>
+                    <li><a href="#" aria-label="VK"><img src="{% static 'main/img/logo/vk.svg' %}" alt="VK" onerror="this.style.display='none'; this.outerHTML='📘'"></a></li>
+                    <li><a href="#" aria-label="Telegram"><img src="{% static 'main/img/logo/telegram.webp' %}" alt="Telegram" onerror="this.style.display='none'; this.outerHTML='💬'"></a></li>
+                    <li><a href="#" aria-label="WhatsApp"><img src="{% static 'main/img/logo/whatsapp.svg' %}" alt="WhatsApp" onerror="this.style.display='none'; this.outerHTML='📞'"></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-copyright">
+                © 2025 Радиозавод "Кристалл"
+            </div>
+        </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+            }
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                });
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -4,17 +4,13 @@
 {% block title %}Новости | Радиозавод «Кристалл»{% endblock %}
 
 {% block content %}
-<!-- Hero секция для новостей -->
-<section class="page-hero page-hero--news">
+<section class="page-header">
     <div class="container">
-        <div class="page-hero__content">
-            <h1 class="page-hero__title">Новости предприятия</h1>
-            <p class="page-hero__subtitle">Актуальная информация о жизни радиозавода «Кристалл»</p>
-        </div>
+        <h1 class="page-header__title">Новости предприятия</h1>
+        <p class="page-header__subtitle">Актуальная информация о жизни радиозавода «Кристалл»</p>
     </div>
 </section>
 
-<!-- Сетка новостей -->
 <section class="news-section">
     <div class="container">
         {% if news %}
@@ -41,7 +37,7 @@
                 <div class="news-article__content">
                     <h2 class="news-article__title">{{ item.title }}</h2>
                     <div class="news-article__text">
-                        {{ item.content|linebreaksbr|truncatewords:50 }}
+                        {{ item.content|linebreaksbr }}
                     </div>
                     <button class="news-article__read-more" onclick="this.closest('.news-article').classList.toggle('expanded')">
                         <span>Читать полностью</span>
