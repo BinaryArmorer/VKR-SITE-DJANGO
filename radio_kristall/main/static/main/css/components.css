@@ -1,0 +1,73 @@
+/* ========== Кнопки ========== */
+.btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn--primary {
+    background: var(--primary);
+    color: #0b1120;
+    border: none;
+}
+
+.btn--primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+}
+
+.btn--secondary {
+    background: transparent;
+    color: var(--text-white);
+    border: 2px solid var(--primary);
+}
+
+.btn--secondary:hover {
+    background: rgba(245, 158, 11, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-vacancy {
+    background: transparent;
+    border: 2px solid #34d399;
+    color: #34d399;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-vacancy:hover {
+    background: #34d399;
+    color: #0a0f1a;
+    transform: translateY(-2px);
+}
+
+/* ========== Page Header ========== */
+.page-header {
+    background: linear-gradient(135deg, #0a0f1a 0%, #1a1f2e 100%);
+    padding: 4rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border-dim);
+}
+
+.page-header__title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text-white), var(--primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.page-header__subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+}
