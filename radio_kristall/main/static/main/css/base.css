@@ -31,3 +31,21 @@ body {
     margin: 0 auto;
     padding: 0 2rem;
 }
+
+/* Предотвращение горизонтального скролла ВСЕГДА */
+html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Контейнер тоже ограничиваем */
+.container {
+    overflow-x: hidden;
+}
