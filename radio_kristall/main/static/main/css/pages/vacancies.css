@@ -90,20 +90,6 @@
     white-space: normal;
 }
 
-.vacancy-card__description::-webkit-scrollbar {
-    width: 4px;
-}
-
-.vacancy-card__description::-webkit-scrollbar-track {
-    background: var(--border-dim);
-    border-radius: 4px;
-}
-
-.vacancy-card__description::-webkit-scrollbar-thumb {
-    background: #34d399;
-    border-radius: 4px;
-}
-
 .vacancy-card__footer {
     padding: 1rem 1.5rem 1.5rem;
     display: flex;
@@ -192,4 +178,41 @@
 .hero-stat__label {
     font-size: 0.85rem;
     color: var(--text-muted);
+}
+
+.vacancy-card__description {
+    color: var(--text-gray);
+    line-height: 1.6;
+    max-height: 150px; /* Ограничение высоты */
+    overflow-y: hidden; /* Скрываем прокрутку */
+    transition: max-height 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.vacancy-card.expanded .vacancy-card__description {
+    max-height: none; /* Показываем полностью */
+}
+
+.vacancy-card__read-more {
+    margin-top: 1rem;
+    background: none;
+    border: none;
+    color: #34d399; /* Зеленый цвет как в вакансиях */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    transition: gap 0.3s ease;
+    padding: 0;
+}
+
+.vacancy-card__read-more:hover {
+    gap: 0.75rem;
+}
+
+.vacancy-card.expanded .vacancy-card__read-more svg {
+    transform: rotate(180deg);
 }

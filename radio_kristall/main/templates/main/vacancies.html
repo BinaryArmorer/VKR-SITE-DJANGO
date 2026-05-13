@@ -50,6 +50,12 @@
                     <div class="vacancy-card__description">
                         {{ vacancy.description|linebreaksbr }}
                     </div>
+                    <button class="vacancy-card__read-more" onclick="this.closest('.vacancy-card').classList.toggle('expanded')">
+                        <span>Читать полностью</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
                 </div>
                 
                 <div class="vacancy-card__footer">
