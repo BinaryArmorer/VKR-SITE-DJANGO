@@ -1,118 +1,182 @@
 /* ========== Страница вакансий ========== */
+
+/* Общие стили секции */
 .vacancies-section {
     padding: 4rem 0;
 }
 
-.vacancies-grid {
+/* Сетка вакансий в стиле новостей */
+.vacancies-masonry {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-.vacancy-card {
+/* Карточка вакансии */
+.vacancy-article {
     background: var(--bg-card);
-    border-radius: 1.25rem;
-    border: 1px solid var(--border-dim);
-    transition: all 0.3s ease;
+    border-radius: 1.5rem;
     overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid var(--border-dim);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.vacancy-card:hover {
+.vacancy-article:hover {
     border-color: #34d399;
 }
 
-.vacancy-card__header {
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid var(--border-dim);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+/* Обёртка изображения */
+.vacancy-article__image-wrapper {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1f2e, #0f111a);
 }
 
-.vacancy-card__title-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.vacancy-card__title {
-    font-size: 1.3rem;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.vacancy-card__icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+.vacancy-article__image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.vacancy-card__icon--placeholder {
-    background: linear-gradient(135deg, #1e293b, #0f172a);
+.vacancy-article__image-wrapper--placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.vacancy-article__placeholder-icon {
+    font-size: 4rem;
+    opacity: 0.5;
+}
+
+/* Бейдж с датой */
+.vacancy-article__date-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.vacancy-article__day {
+    display: block;
     font-size: 1.5rem;
-}
-
-.vacancy-card__salary {
-    text-align: right;
-}
-
-.salary-label {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-}
-
-.salary-value {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 800;
+    line-height: 1;
     color: #34d399;
 }
 
-.vacancy-card__body {
+.vacancy-article__month {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-gray);
+}
+
+.vacancy-article__badge-type {
+    display: block;
+    font-size: 0.6rem;
+    margin-top: 0.25rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid rgba(52, 211, 153, 0.3);
+    color: #34d399;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Контент карточки */
+.vacancy-article__content {
     padding: 1.5rem;
 }
 
-.vacancy-card__description {
+.vacancy-article__title {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    color: var(--text-white);
+    word-wrap: break-word;
+}
+
+.vacancy-article__salary {
+    display: inline-block;
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.25rem 1rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+/* Описание с прокруткой */
+.vacancy-article__description {
     color: var(--text-gray);
     line-height: 1.6;
-    max-height: 200px;
+    max-height: 120px;
     overflow-y: auto;
+    transition: max-height 0.3s ease;
     word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
+    padding-right: 4px;
 }
 
-.vacancy-card__footer {
-    padding: 1rem 1.5rem 1.5rem;
+.vacancy-article__description::-webkit-scrollbar {
+    width: 4px;
+}
+
+.vacancy-article__description::-webkit-scrollbar-track {
+    background: var(--border-dim);
+    border-radius: 4px;
+}
+
+.vacancy-article__description::-webkit-scrollbar-thumb {
+    background: #34d399;
+    border-radius: 4px;
+}
+
+.vacancy-article.expanded .vacancy-article__description {
+    max-height: none;
+    overflow-y: visible;
+}
+
+/* Кнопка "Читать полностью" */
+.vacancy-article__read-more {
+    margin-top: 1rem;
+    background: none;
+    border: none;
+    color: #34d399;
+    cursor: pointer;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    transition: gap 0.3s ease;
+    padding: 0;
 }
 
-.vacancy-card__meta {
-    display: flex;
-    gap: 1rem;
+.vacancy-article__read-more:hover {
+    gap: 0.75rem;
 }
 
-.meta-item {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+.vacancy-article__read-more svg {
+    transition: transform 0.3s ease;
 }
 
-/* Преимущества */
+.vacancy-article.expanded .vacancy-article__read-more svg {
+    transform: rotate(180deg);
+}
+
+/* Блок преимуществ */
 .benefits-section {
     padding: 4rem 0;
     background: rgba(0, 0, 0, 0.3);
@@ -180,39 +244,16 @@
     color: var(--text-muted);
 }
 
-.vacancy-card__description {
-    color: var(--text-gray);
-    line-height: 1.6;
-    max-height: 150px; /* Ограничение высоты */
-    overflow-y: hidden; /* Скрываем прокрутку */
-    transition: max-height 0.3s ease;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
+/* Адаптивность */
+@media (max-width: 768px) {
+    .page-hero__stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
-.vacancy-card.expanded .vacancy-card__description {
-    max-height: none; /* Показываем полностью */
-}
-
-.vacancy-card__read-more {
-    margin-top: 1rem;
-    background: none;
-    border: none;
-    color: #34d399; /* Зеленый цвет как в вакансиях */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    transition: gap 0.3s ease;
-    padding: 0;
-}
-
-.vacancy-card__read-more:hover {
-    gap: 0.75rem;
-}
-
-.vacancy-card.expanded .vacancy-card__read-more svg {
-    transform: rotate(180deg);
+@media (max-width: 768px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
 }

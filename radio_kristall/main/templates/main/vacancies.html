@@ -28,57 +28,42 @@
 <section class="vacancies-section">
     <div class="container">
         {% if vacancies %}
-        <div class="vacancies-grid">
+        <div class="vacancies-masonry">
             {% for vacancy in vacancies %}
-            <div class="vacancy-card">
-                <div class="vacancy-card__header">
-                    <div class="vacancy-card__title-wrapper">
-                        <h2 class="vacancy-card__title">{{ vacancy.title }}</h2>
-                        {% if vacancy.image %}
-                        <img src="{{ vacancy.image.url }}" alt="{{ vacancy.title }}" class="vacancy-card__icon">
-                        {% else %}
-                        <div class="vacancy-card__icon vacancy-card__icon--placeholder">💼</div>
-                        {% endif %}
-                    </div>
-                    <div class="vacancy-card__salary">
-                        <span class="salary-label">Зарплата</span>
-                        <span class="salary-value">{{ vacancy.salary }}</span>
+            <article class="vacancy-article">
+                {% if vacancy.image %}
+                <div class="vacancy-article__image-wrapper">
+                    <img src="{{ vacancy.image.url }}" alt="{{ vacancy.title }}" class="vacancy-article__image">
+                    <div class="vacancy-article__date-badge">
+                        <span class="vacancy-article__day">{{ vacancy.publish_date|date:"d" }}</span>
+                        <span class="vacancy-article__month">{{ vacancy.publish_date|date:"M"|upper }}</span>
+                        <span class="vacancy-article__badge-type">Вакансия</span>
                     </div>
                 </div>
-                
-                <div class="vacancy-card__body">
-                    <div class="vacancy-card__description">
+                {% else %}
+                <div class="vacancy-article__image-wrapper vacancy-article__image-wrapper--placeholder">
+                    <div class="vacancy-article__placeholder-icon">💼</div>
+                    <div class="vacancy-article__date-badge">
+                        <span class="vacancy-article__day">{{ vacancy.publish_date|date:"d" }}</span>
+                        <span class="vacancy-article__month">{{ vacancy.publish_date|date:"M"|upper }}</span>
+                        <span class="vacancy-article__badge-type">Вакансия</span>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="vacancy-article__content">
+                    <h2 class="vacancy-article__title">{{ vacancy.title }}</h2>
+                    <div class="vacancy-article__salary">{{ vacancy.salary }}</div>
+                    <div class="vacancy-article__description">
                         {{ vacancy.description|linebreaksbr }}
                     </div>
-                    <button class="vacancy-card__read-more" onclick="this.closest('.vacancy-card').classList.toggle('expanded')">
+                    <button class="vacancy-article__read-more" onclick="this.closest('.vacancy-article').classList.toggle('expanded')">
                         <span>Читать полностью</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
                 </div>
-                
-                <div class="vacancy-card__footer">
-                    <div class="vacancy-card__meta">
-                        <span class="meta-item">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                            {{ vacancy.publish_date|date:"d.m.Y" }}
-                        </span>
-                        <span class="meta-item">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            Полный день
-                        </span>
-                    </div>
-                </div>
-            </div>
+            </article>
             {% endfor %}
         </div>
         {% else %}
@@ -120,26 +105,7 @@
 </section>
 
 <style>
-    .page-hero__stats {
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-        margin-top: 2rem;
-        flex-wrap: wrap;
-    }
-    .hero-stat {
-        text-align: center;
-    }
-    .hero-stat__number {
-        display: block;
-        font-size: 2rem;
-        font-weight: 800;
-        color: #34d399;
-    }
-    .hero-stat__label {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-    }
+    /* Дополнительная адаптация для статистики */
     @media (max-width: 768px) {
         .page-hero__stats {
             flex-direction: column;

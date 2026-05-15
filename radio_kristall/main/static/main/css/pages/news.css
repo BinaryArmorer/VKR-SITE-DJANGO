@@ -1,4 +1,5 @@
 /* ========== Страница новостей ========== */
+
 .news-section {
     padding: 4rem 0;
     background: var(--bg-dark);
@@ -88,7 +89,6 @@
     line-height: 1.4;
     color: var(--text-white);
     word-wrap: break-word;
-    overflow-wrap: break-word;
 }
 
 .news-article__text {
@@ -98,8 +98,6 @@
     overflow-y: auto;
     transition: max-height 0.3s ease;
     word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
     padding-right: 4px;
 }
 
