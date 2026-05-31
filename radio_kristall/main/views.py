@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import News, Vacancies
+from django.shortcuts import render, get_object_or_404
+from .models import News, Vacancies, Catalog
 
 def index(request):
     return render(request, 'main/index.html')
@@ -16,4 +16,9 @@ def about(request):
     return render(request, 'main/about.html')
 
 def catalog(request):
-    return render(request, 'main/catalog.html')
+    products = Catalog.objects.filter(is_published=True)
+    return render(request, 'main/catalog.html', {'products': products})
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Catalog, id=product_id, is_published=True)
+    return render(request, 'main/product_detail.html', {'product': product})

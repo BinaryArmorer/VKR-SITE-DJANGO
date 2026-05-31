@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, Vacancies
+from .models import News, Vacancies, Catalog
 
 
 @admin.register(News)
@@ -18,9 +18,23 @@ class NewsAdmin(admin.ModelAdmin):
         }),
     )
 
+
 @admin.register(Vacancies)
 class VacanciesAdmin(admin.ModelAdmin):
     list_display = ('title', 'salary', 'publish_date', 'is_published')
     list_filter = ('is_published', 'publish_date')
     search_fields = ('title', 'description')
     readonly_fields = ('vacancy_id',)
+
+
+@admin.register(Catalog)
+class CatalogAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'price', 'is_published')
+    list_filter = ('is_published',)
+    search_fields = ('name', 'description')
+    list_editable = ('is_published', 'price')
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'description', 'price', 'image', 'is_published')
+        }),
+    )

@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} | Радиозавод «Кристалл»{% endblock %}
+
+{% block content %}
+<section class="product-detail-section">
+    <div class="container">
+        <div class="product-detail">
+            <div class="product-detail__back">
+                <a href="{% url 'catalog' %}" class="back-link">
+                    ← Назад в каталог
+                </a>
+            </div>
+            
+            <div class="product-detail__grid">
+                <div class="product-detail__gallery">
+                    {% if product.image %}
+                    <div class="product-detail__image-wrapper">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-detail__image">
+                    </div>
+                    {% else %}
+                    <div class="product-detail__image-wrapper product-detail__image-wrapper--placeholder">
+                        <div class="product-detail__placeholder-icon">🔧</div>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="product-detail__info">
+                    <div class="product-detail__badge">Товар в наличии</div>
+                    <h1 class="product-detail__title">{{ product.name }}</h1>
+                    <div class="product-detail__price">{{ product.price }} ₽</div>
+                    <div class="product-detail__description">
+                        <h3>Описание</h3>
+                        <div class="product-detail__description-text">
+                            {{ product.description|linebreaksbr }}
+                        </div>
+                    </div>
+                    <div class="product-detail__actions">
+                        <button class="product-detail__btn product-detail__btn--primary" onclick="showOrderAlert('{{ product.name }}', '{{ product.price }}')">
+                            Запросить цену
+                        </button>
+                        <button class="product-detail__btn product-detail__btn--secondary" onclick="showConsultAlert('{{ product.name }}')">
+                            Получить консультацию
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function showOrderAlert(productName, productPrice) {
+    alert(`Стоимость товара "${productName}" составляет ${productPrice} ₽\n\nДля оформления заказа свяжитесь с нашим отделом продаж:\n📞 +7 (495) 123-45-67\n✉️ info@kristall.ru`);
+}
+
+function showConsultAlert(productName) {
+    alert(`Консультация по товару "${productName}"\n\nСвяжитесь с нашими специалистами:\n📞 +7 (495) 123-45-67\n✉️ info@kristall.ru`);
+}
+</script>
+
+<button class="scrollToTopBtn" id="scrollToTopBtn" aria-label="Наверх">↑</button>
+{% endblock %}

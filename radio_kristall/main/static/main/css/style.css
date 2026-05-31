@@ -6,4 +6,6 @@
 @import 'pages/news.css';
 @import 'pages/vacancies.css';
 @import 'pages/about.css';
+@import 'pages/catalog.css';
+@import 'pages/product_detail.css';
 @import 'responsive.css';

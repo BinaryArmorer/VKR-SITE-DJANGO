@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Каталог | Радиозавод «Кристалл»{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-header__title">Каталог продукции</h1>
+        <p class="page-header__subtitle">Электронные компоненты для любой задачи</p>
+    </div>
+</section>
+
+<section class="catalog-section">
+    <div class="container">
+        {% if products %}
+        <div class="catalog-grid">
+            {% for product in products %}
+            <a href="{% url 'product_detail' product.id %}" class="catalog-card-link">
+                <div class="catalog-card">
+                    {% if product.image %}
+                    <div class="catalog-card__image-wrapper">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="catalog-card__image">
+                    </div>
+                    {% else %}
+                    <div class="catalog-card__image-wrapper catalog-card__image-wrapper--placeholder">
+                        <div class="catalog-card__placeholder-icon">🔧</div>
+                    </div>
+                    {% endif %}
+                    <div class="catalog-card__content">
+                        <h2 class="catalog-card__title">{{ product.name }}</h2>
+                        <div class="catalog-card__description">
+                            {{ product.description|truncatewords:20|linebreaksbr }}
+                        </div>
+                        <div class="catalog-card__footer">
+                            <div class="catalog-card__price">{{ product.price }} ₽</div>
+                            <span class="catalog-card__btn">Подробнее →</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-state__icon">📦</div>
+            <h3 class="empty-state__title">Товаров пока нет</h3>
+            <p class="empty-state__text">Каталог пополняется. Загляните позже!</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<button class="scrollToTopBtn" id="scrollToTopBtn" aria-label="Наверх">↑</button>
+{% endblock %}

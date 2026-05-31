@@ -16,6 +16,11 @@ def vacancy_image_path(instance, filename):
     filename = f"{uuid.uuid4()}.{ext}"
     return os.path.join('vacancies_images', filename)
 
+def catalog_image_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join('catalog_images', filename)
+
 # Таблицы
 class News(models.Model):
 
@@ -62,3 +67,27 @@ class Vacancies(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.salary}" # Вывод для дебага
+
+
+class Catalog(models.Model):
+
+    class Meta:
+        ordering = ['id']
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Каталог'
+
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255, verbose_name='Название товара')
+    description = models.TextField(verbose_name='Описание товара')
+    price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name='Цена товара')
+    is_published = models.BooleanField(default=False, db_index=True, verbose_name='Опубликовано')
+    image = models.ImageField(
+        upload_to=catalog_image_path,
+        validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])],
+        blank=True,
+        null=True,
+        verbose_name='Изображение'
+    )
+
+    def __str__(self):
+        return f"{self.name} - {self.price} ₽"
