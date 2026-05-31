@@ -37,11 +37,8 @@
                         </div>
                     </div>
                     <div class="product-detail__actions">
-                        <button class="product-detail__btn product-detail__btn--primary" onclick="showOrderAlert('{{ product.name }}', '{{ product.price }}')">
-                            Запросить цену
-                        </button>
-                        <button class="product-detail__btn product-detail__btn--secondary" onclick="showConsultAlert('{{ product.name }}')">
-                            Получить консультацию
+                        <button class="product-detail__btn product-detail__btn">
+                            Купить
                         </button>
                     </div>
                 </div>
@@ -49,16 +46,6 @@
         </div>
     </div>
 </section>
-
-<script>
-function showOrderAlert(productName, productPrice) {
-    alert(`Стоимость товара "${productName}" составляет ${productPrice} ₽\n\nДля оформления заказа свяжитесь с нашим отделом продаж:\n📞 +7 (495) 123-45-67\n✉️ info@kristall.ru`);
-}
-
-function showConsultAlert(productName) {
-    alert(`Консультация по товару "${productName}"\n\nСвяжитесь с нашими специалистами:\n📞 +7 (495) 123-45-67\n✉️ info@kristall.ru`);
-}
-</script>
 
 <button class="scrollToTopBtn" id="scrollToTopBtn" aria-label="Наверх">↑</button>
 {% endblock %}
