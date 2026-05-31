@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ news_item.title }} | Новости | Радиозавод «Кристалл»{% endblock %}
+
+{% block content %}
+<section class="detail-section">
+    <div class="container">
+        <div class="detail">
+            <div class="detail__back">
+                <a href="{% url 'news' %}" class="back-link">
+                    ← Назад ко всем новостям
+                </a>
+            </div>
+
+            <div class="detail__grid">
+                <div class="detail__gallery">
+                    {% if news_item.image %}
+                    <div class="detail__image-wrapper">
+                        <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}" class="detail__image">
+                    </div>
+                    {% else %}
+                    <div class="detail__image-wrapper detail__image-wrapper--placeholder">
+                        <div class="detail__placeholder-icon">📰</div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="detail__info">
+                    <div class="detail__badge" style="background: rgba(245,158,11,0.15); color: var(--primary-light);">
+                        {{ news_item.publish_date|date:"d E Y" }} • Опубликовано
+                    </div>
+                    <h1 class="detail__title">{{ news_item.title }}</h1>
+                    <div class="detail__description">
+                        <h3>Полный текст новости</h3>
+                        <div class="detail__description-text">
+                            {{ news_item.content|linebreaksbr }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<button class="scrollToTopBtn" id="scrollToTopBtn" aria-label="Наверх">↑</button>
+{% endblock %}

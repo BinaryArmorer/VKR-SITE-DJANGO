@@ -11,49 +11,49 @@
     </div>
 </section>
 
-<section class="news-section">
+<section class="items-section">
     <div class="container">
         {% if news %}
-        <div class="news-masonry">
+        <div class="items-grid">
             {% for item in news %}
-            <article class="news-article">
-                {% if item.image %}
-                <div class="news-article__image-wrapper">
-                    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="news-article__image">
-                    <div class="news-article__date-badge">
-                        <span class="news-article__day">{{ item.publish_date|date:"d" }}</span>
-                        <span class="news-article__month">{{ item.publish_date|date:"M"|upper }}</span>
+            <a href="{% url 'news_detail' item.news_id %}" class="item-card-link">
+                <div class="item-card">
+                    {% if item.image %}
+                    <div class="item-card__image-wrapper">
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="item-card__image">
+                        <div class="item-card__date-badge">
+                            <span class="item-card__day">{{ item.publish_date|date:"d" }}</span>
+                            <span class="item-card__month">{{ item.publish_date|date:"M"|upper }}</span>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="item-card__image-wrapper item-card__image-wrapper--placeholder">
+                        <div class="item-card__placeholder-icon">📰</div>
+                        <div class="item-card__date-badge">
+                            <span class="item-card__day">{{ item.publish_date|date:"d" }}</span>
+                            <span class="item-card__month">{{ item.publish_date|date:"M"|upper }}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="item-card__content">
+                        <h2 class="item-card__title">{{ item.title }}</h2>
+                        <div class="item-card__description">
+                            {{ item.content|truncatewords:25|linebreaksbr }}
+                        </div>
+                        <div class="item-card__footer">
+                            <span></span>
+                            <span class="item-card__btn">Подробнее →</span>
+                        </div>
                     </div>
                 </div>
-                {% else %}
-                <div class="news-article__image-wrapper news-article__image-wrapper--placeholder">
-                    <div class="news-article__placeholder-icon">📰</div>
-                    <div class="news-article__date-badge">
-                        <span class="news-article__day">{{ item.publish_date|date:"d" }}</span>
-                        <span class="news-article__month">{{ item.publish_date|date:"M"|upper }}</span>
-                    </div>
-                </div>
-                {% endif %}
-                <div class="news-article__content">
-                    <h2 class="news-article__title">{{ item.title }}</h2>
-                    <div class="news-article__text">
-                        {{ item.content|linebreaksbr }}
-                    </div>
-                    <button class="news-article__read-more" onclick="this.closest('.news-article').classList.toggle('expanded')">
-                        <span>Читать полностью</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                </div>
-            </article>
+            </a>
             {% endfor %}
         </div>
         {% else %}
         <div class="empty-state">
             <div class="empty-state__icon">📭</div>
             <h3 class="empty-state__title">Новостей пока нет</h3>
-            <p class="empty-state__text">Следите за обновлениями — новости появятся soon!</p>
+            <p class="empty-state__text">Следите за обновлениями – новости появятся soon!</p>
         </div>
         {% endif %}
     </div>

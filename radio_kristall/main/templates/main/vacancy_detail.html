@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ vacancy_item.title }} | Вакансии | Радиозавод «Кристалл»{% endblock %}
+
+{% block content %}
+<section class="detail-section">
+    <div class="container">
+        <div class="detail">
+            <div class="detail__back">
+                <a href="{% url 'vacancies' %}" class="back-link">
+                    ← Назад ко всем вакансиям
+                </a>
+            </div>
+
+            <div class="detail__grid">
+                <div class="detail__gallery">
+                    {% if vacancy_item.image %}
+                    <div class="detail__image-wrapper">
+                        <img src="{{ vacancy_item.image.url }}" alt="{{ vacancy_item.title }}" class="detail__image">
+                    </div>
+                    {% else %}
+                    <div class="detail__image-wrapper detail__image-wrapper--placeholder">
+                        <div class="detail__placeholder-icon">💼</div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="detail__info">
+                    <div class="detail__badge" style="background: rgba(52,211,153,0.15); color: #34d399;">
+                        {{ vacancy_item.publish_date|date:"d E Y" }} • Опубликовано
+                    </div>
+                    <h1 class="detail__title">{{ vacancy_item.title }}</h1>
+                    <div class="detail__price" style="color: #34d399;">{{ vacancy_item.salary }}</div>
+                    <div class="detail__description">
+                        <h3>Описание вакансии</h3>
+                        <div class="detail__description-text">
+                            {{ vacancy_item.description|linebreaksbr }}
+                        </div>
+                    </div>
+                    <div class="detail__actions">
+                        <button class="detail__btn" onclick="window.location.href='mailto:hr@kristall.ru?subject=Резюме на вакансию {{ vacancy_item.title }}'">
+                            Откликнуться
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<button class="scrollToTopBtn" id="scrollToTopBtn" aria-label="Наверх">↑</button>
+{% endblock %}

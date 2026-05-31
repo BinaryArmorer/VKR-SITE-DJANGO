@@ -11,30 +11,30 @@
     </div>
 </section>
 
-<section class="catalog-section">
+<section class="items-section">
     <div class="container">
         {% if products %}
-        <div class="catalog-grid">
+        <div class="items-grid">
             {% for product in products %}
-            <a href="{% url 'product_detail' product.id %}" class="catalog-card-link">
-                <div class="catalog-card">
+            <a href="{% url 'product_detail' product.id %}" class="item-card-link">
+                <div class="item-card">
                     {% if product.image %}
-                    <div class="catalog-card__image-wrapper">
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="catalog-card__image">
+                    <div class="item-card__image-wrapper">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="item-card__image">
                     </div>
                     {% else %}
-                    <div class="catalog-card__image-wrapper catalog-card__image-wrapper--placeholder">
-                        <div class="catalog-card__placeholder-icon">🔧</div>
+                    <div class="item-card__image-wrapper item-card__image-wrapper--placeholder">
+                        <div class="item-card__placeholder-icon">🔧</div>
                     </div>
                     {% endif %}
-                    <div class="catalog-card__content">
-                        <h2 class="catalog-card__title">{{ product.name }}</h2>
-                        <div class="catalog-card__description">
+                    <div class="item-card__content">
+                        <h2 class="item-card__title">{{ product.name }}</h2>
+                        <div class="item-card__description">
                             {{ product.description|truncatewords:20|linebreaksbr }}
                         </div>
-                        <div class="catalog-card__footer">
-                            <div class="catalog-card__price">{{ product.price }} ₽</div>
-                            <span class="catalog-card__btn">Подробнее →</span>
+                        <div class="item-card__footer">
+                            <div class="item-card__price">{{ product.price }} ₽</div>
+                            <span class="item-card__btn">Подробнее →</span>
                         </div>
                     </div>
                 </div>
